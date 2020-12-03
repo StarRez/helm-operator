@@ -28,7 +28,7 @@ jobs:
       - name: Login to ACR
         uses: docker/login-action@v1
         with:
-          registry: dhall.azurecr.io
+          registry: srzdevregistry.azurecr.io
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
 
@@ -36,7 +36,7 @@ jobs:
         run: make
 
       - name: Custom tag the docker image
-        run: docker tag fluxcd/helm-operator:latest dhall.azurecr.io/helm-operator:1.2.0
+        run: docker tag fluxcd/helm-operator:latest srzdevregistry.azurecr.io/helm-operator:1.2.0
 
       - name: Publish Docker image
-        run: docker push dhall.azurecr.io/helm-operator:1.2.0
+        run: docker push srzdevregistry.azurecr.io/helm-operator:1.2.0
